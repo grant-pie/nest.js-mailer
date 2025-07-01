@@ -22,7 +22,7 @@ export class MailerController {
     const userSubject = 'Confirmation: Your message has been sent';
     const userName = mailerDto.firstName + ' ' + mailerDto.lastName;
     const userText = `
-    Hi ${userName},:\n\n
+    Hi ${userName},\n\n
     Thank you for reaching out. We will get back to you shortly:\n\n.
     Grant Pieterse - Pet Sitter
     `;
