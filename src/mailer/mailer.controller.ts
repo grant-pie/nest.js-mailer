@@ -1,5 +1,4 @@
 // src/mailer/mailer.controller.ts
-//Do not use this controller it is for testing only
 import { Controller, Post, Body, UnauthorizedException, HttpException, HttpStatus } from '@nestjs/common';
 import { MailerService } from './mailer.service';
 import { MailerDto } from './mailer.dto';
