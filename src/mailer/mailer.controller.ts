@@ -14,8 +14,6 @@ export class MailerController {
 
   @Post('send')
   async sendMail(@Body() mailerDto: MailerDto) {
-    
-
     const phoneIn = mailerDto.phone;
     const petTypeIn = mailerDto.petType;
     const datesIn = mailerDto.dates;
@@ -36,15 +34,20 @@ export class MailerController {
     const adminText = `You have received a new message from ${userName} (${userTo}):\n\n${message}`;
     
     try {
-        // Commented out reCAPTCHA verification
-        /*
+        // reCAPTCHA Enterprise verification
+        if (!mailerDto.recaptchaToken) {
+            throw new UnauthorizedException('reCAPTCHA token is required');
+        }
+
         const isValidToken = await this.recaptchaService.verify(
-            mailerDto.recaptchaToken
+            mailerDto.recaptchaToken,
+            'contact_form', // Expected action - update this to match your frontend action
+            0.5 // Minimum score threshold (0.0-1.0, where 1.0 is most likely human)
         );
         
         if (!isValidToken) {
             throw new UnauthorizedException('reCAPTCHA verification failed. Please try again.');
-        }*/
+        }
 
         // Send emails with client IP
         const adminMailResponse = await this.mailerService.sendMail(
@@ -78,5 +81,4 @@ export class MailerController {
         );
     }
   }
-    
 }
