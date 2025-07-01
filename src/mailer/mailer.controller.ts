@@ -37,13 +37,14 @@ export class MailerController {
     
     try {
         // Commented out reCAPTCHA verification
+        /*
         const isValidToken = await this.recaptchaService.verify(
             mailerDto.recaptchaToken
         );
         
         if (!isValidToken) {
             throw new UnauthorizedException('reCAPTCHA verification failed. Please try again.');
-        }
+        }*/
 
         // Send emails with client IP
         const adminMailResponse = await this.mailerService.sendMail(
