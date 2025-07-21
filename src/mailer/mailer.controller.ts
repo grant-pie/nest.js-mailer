@@ -102,10 +102,7 @@ export class MailerController {
       firstName: data.firstName?.trim(),
       lastName: data.lastName?.trim(),
       email: data.email?.trim().toLowerCase(),
-      phone: data.phone?.trim(),
-      petType: data.petType?.trim(),
-      dates: data.dates?.trim(),
-      recaptchaToken: data.recaptchaToken?.trim(),
+      message: data.message,
     };
   }
 
@@ -126,11 +123,6 @@ export class MailerController {
 
 Thank you for reaching out to us regarding pet sitting services. We have received your message and will get back to you within 24 hours.
 
-Your submitted information:
-- Contact: ${data.phone}
-- Pet Type(s): ${data.petType}
-- Requested Dates: ${data.dates}
-
 Best regards,
 Grant Pieterse - Pet Sitter
 
@@ -146,11 +138,7 @@ This is an automated confirmation email. Please do not reply to this message.`
 Contact Information:
 - Name: ${userName}
 - Email: ${data.email}
-- Phone: ${data.phone}
-
-Service Details:
-- Pet Type(s): ${data.petType}
-- Requested Dates: ${data.dates}
+- Message: ${data.message}
 
 Please respond to the customer within 24 hours.`
       }

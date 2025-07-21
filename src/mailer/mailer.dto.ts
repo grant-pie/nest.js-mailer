@@ -21,24 +21,10 @@ export class MailerDto {
   @Transform(({ value }) => value?.trim().toLowerCase())
   email: string;
 
-  @IsNotEmpty({ message: 'Phone number is required' })
-  @IsString({ message: 'Phone number must be a string' })
-  @MaxLength(20, { message: 'Phone number cannot exceed 20 characters' })
-  @Matches(/^[\d\s\-\+\(\)]+$/, { message: 'Please provide a valid phone number' })
-  @Transform(({ value }) => value?.trim())
-  phone: string;
-
-  @IsNotEmpty({ message: 'Pet type is required' })
-  @IsString({ message: 'Pet type must be a string' })
-  @MaxLength(200, { message: 'Pet type description cannot exceed 200 characters' })
-  @Transform(({ value }) => value?.trim())
-  petType: string;
-
-  @IsNotEmpty({ message: 'Dates are required' })
-  @IsString({ message: 'Dates must be a string' })
-  @MaxLength(200, { message: 'Dates description cannot exceed 200 characters' })
-  @Transform(({ value }) => value?.trim())
-  dates: string;
+  @IsNotEmpty({ message: 'Message is required' })
+  @IsString({ message: 'Message must be a string' })
+  @MaxLength(500, { message: 'Message cannot exceed 500 characters' })
+  message: string;
 
   @IsNotEmpty({ message: 'Security verification is required' })
   @IsString({ message: 'Invalid security token' })
